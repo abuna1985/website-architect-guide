@@ -1,0 +1,47 @@
+name: Process Improvement
+description: Suggest an improvement to the website development process
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Development Phase
+      options:
+        - Discovery
+        - Technical Planning
+        - Design
+        - Implementation
+        - Deployment
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-process
+    attributes:
+      label: Current Process
+      placeholder: Describe the current process or lack thereof
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-improvement
+    attributes:
+      label: Proposed Improvement
+      placeholder: Describe your suggested improvement
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      placeholder: What are the benefits of this improvement?
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation-steps
+    attributes:
+      label: Implementation Steps
+      placeholder: What steps are needed to implement this improvement?
