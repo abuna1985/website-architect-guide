@@ -1,0 +1,65 @@
+name: Phase Documentation
+description: Document a website development phase
+title: "docs(phase): "
+labels: ["documentation", "phase"]
+body:
+  - type: dropdown
+    id: phase-number
+    attributes:
+      label: Phase Number
+      options:
+        - "01-discovery"
+        - "02-technical-planning"
+        - "03-design"
+        - "04-implementation"
+        - "05-deployment"
+    validations:
+      required: true
+
+  - type: textarea
+    id: phase-overview
+    attributes:
+      label: Phase Overview
+      placeholder: |
+        What is this phase about?
+        What are the key outcomes?
+        When does this phase start/end?
+    validations:
+      required: true
+
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Phase Deliverables
+      placeholder: |
+        Required documents:
+        Required decisions:
+        Required approvals:
+    validations:
+      required: true
+
+  - type: textarea
+    id: process-steps
+    attributes:
+      label: Process Steps
+      placeholder: |
+        1. Step one
+          - Sub-tasks
+          - Required tools
+          - Templates used
+
+        2. Step two
+          - Sub-tasks
+          - Required tools
+          - Templates used
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples-needed
+    attributes:
+      label: Examples To Create
+      placeholder: |
+        /examples/[phase]/
+        - Example 1: Purpose and content
+        - Example 2: Purpose and content

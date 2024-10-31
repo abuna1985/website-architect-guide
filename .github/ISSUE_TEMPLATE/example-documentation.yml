@@ -1,0 +1,52 @@
+name: Example Documentation
+description: Add or update example content
+title: "docs(example): "
+labels: ["documentation", "example"]
+body:
+  - type: dropdown
+    id: example-type
+    attributes:
+      label: Example Type
+      options:
+        - "discovery/interview-questions"
+        - "discovery/storybrand-framework"
+        - "technical/architecture-decision"
+        - "technical/cms-comparison"
+        - "design/system-template"
+        - "design/wireframes"
+        - "new-example"
+    validations:
+      required: true
+
+  - type: textarea
+    id: example-purpose
+    attributes:
+      label: Example Purpose
+      placeholder: |
+        What does this example demonstrate?
+        How should it be used?
+        What makes it a good example?
+    validations:
+      required: true
+
+  - type: textarea
+    id: example-content
+    attributes:
+      label: Example Content
+      placeholder: |
+        1. Context
+          - Project background
+          - Specific challenges
+          - Why this approach worked
+
+        2. Implementation
+          - Key decisions
+          - Process followed
+          - Outcomes
+
+        3. Lessons Learned
+          - What worked well
+          - What could be improved
+          - Tips for reuse
+    validations:
+      required: true

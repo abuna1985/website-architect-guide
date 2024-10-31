@@ -1,0 +1,58 @@
+name: Guide Documentation
+description: Create or update a technical or process guide
+title: "docs(guide): "
+labels: ["documentation", "guide"]
+body:
+  - type: dropdown
+    id: guide-type
+    attributes:
+      label: Guide Type
+      options:
+        - "cms-integration"
+        - "testing-strategy"
+        - "performance-optimization"
+        - "new-guide"
+    validations:
+      required: true
+
+  - type: textarea
+    id: guide-purpose
+    attributes:
+      label: Guide Purpose
+      placeholder: |
+        What problem does this guide solve?
+        Who is this guide for?
+        When should this guide be used?
+    validations:
+      required: true
+
+  - type: textarea
+    id: guide-content
+    attributes:
+      label: Guide Content
+      placeholder: |
+        1. Main concepts to cover
+          - Key points
+          - Common pitfalls
+          - Best practices
+
+        2. Implementation details
+          - Step-by-step process
+          - Code examples
+          - Configuration details
+
+        3. Troubleshooting
+          - Common issues
+          - Solutions
+          - Where to get help
+    validations:
+      required: true
+
+  - type: textarea
+    id: related-resources
+    attributes:
+      label: Related Resources
+      placeholder: |
+        - Related guides
+        - Required tools
+        - External references
