@@ -11,17 +11,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
+
       - name: Set column name and labels
         id: set-values
         run: |
-          echo "::set-output name=column-name::$(echo ${{ github.event_name == 'pull_request' ? '👀 In Review' : '📋 Backlog' }})"
-          echo "::set-output name=labels::$(echo ${{ github.event_name == 'pull_request' ? 'needs-review' : 'needs-triage' }})"
-          
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            echo "::set-output name=column-name::👀 In Review"
+            echo "::set-output name=labels::needs-review"
+          else
+            echo "::set-output name=column-name::📋 Backlog"
+            echo "::set-output name=labels::needs-triage"
+          fi
+
       - name: Add new issue to project column
         uses: konradpabjan/actions-add-new-issue-to-column@v1.1
         with:
           repo-token: ${{ secrets.GH_API_TOKEN }}
-          project_url: 'https://github.com/users/abuna1985/projects/7'
+          project_url: "https://github.com/users/abuna1985/projects/7"
           column-name: ${{ steps.set-values.outputs.column-name }}
           labels: ${{ steps.set-values.outputs.labels }}
