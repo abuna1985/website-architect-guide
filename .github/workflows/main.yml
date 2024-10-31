@@ -1,11 +1,9 @@
 name: Issue Automation
 on:
   issue_comment:
-    types: ["created"]
+    types: [created]
   pull_request:
-    types: ["opened", "closed"]
-  push:
-    branches: ["main"]
+    types: [opened]
 jobs:
   add-to-column:
     runs-on: ubuntu-latest
@@ -14,25 +12,6 @@ jobs:
       - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
         with:
           repo-token: ${{ secrets.GH_API_TOKEN }}
-          project_url: "https://github.com/users/abuna1985/projects/7"
-          column-name: "📋 Backlog"
-          labels: "needs-triage"
-        if: ${{ github.event_name == 'issue_comment' && github.event.action == 'created' }}
-
-      - uses: actions/checkout@v3
-      - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
-        with:
-          repo-token: ${{ secrets.GH_API_TOKEN }}
-          project_url: "https://github.com/users/abuna1985/projects/7"
-          column-name: "🏗️ In Progress"
-          labels: "in-progress"
-        if: ${{ github.event_name == 'push' && github.ref =~ /refs\/heads\/\d+-/ }}
-
-      - uses: actions/checkout@v3
-      - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
-        with:
-          repo-token: ${{ secrets.GH_API_TOKEN }}
-          project-url: "https://github.com/users/abuna1985/projects/7"
-          column-name: "👀 In Review"
-          labels: "needs-review"
-        if: ${{ github.event_name == 'pull_request' && github.event.action == 'opened' }}
+          project_url: 'https://github.com/users/abuna1985/projects/7'
+          column-name: ${{ github.event_name == 'pull_request' ? '👀 In Review' : '📋 Backlog' }}
+          labels: ${{ github.event_name == 'pull_request' ? 'needs-review' : 'needs-triage' }}
